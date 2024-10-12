@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+}
+.navbar {
+    background-color: #fff;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    width: 100%; 
+}
+
+.navbar .bar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding:   
+ 0 20px; 
+}
+
+.logo img {
+    height: 70px;
+}
+
+.user-actions a {
+    margin-left: 20px;
+    color: #333;
+    text-decoration: none;
+}
+
+.inicio-button {
+    background-color: #FF8737;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+/* Estilos generales */
+body {
+    font-family: sans-serif;
+    margin: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Barra de navegación */
+.navbar {
+    background-color: #fff;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 80px;
+}
+
+.user-actions a {
+    margin-left: 20px;
+    color: #333;
+    text-decoration: none;
+}
+
+.register-button {
+    background-color: #ff6600;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+.h2{
+    justify-content: center;
+    justify-items: center;
+    color: #FF8737;
+}
+
+/* Contenedor principal de la reserva */
+.reservation-container {
+    display: flex; 
+    align-items: flex-start; 
+    padding: 20px; 
+}
+
+.croqui {
+    max-width: 50%; 
+    height: auto; 
+    margin-right: 20px; 
+}
+
+.buttons-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px; 
+}
+
+.mesa-button {
+    background-color: orange; 
+    border: none;
+    padding: 10px; 
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold; 
+    text-align: center; 
+}
+
+.mesa-button.selected { 
+    background-color: green; 
+}
+
