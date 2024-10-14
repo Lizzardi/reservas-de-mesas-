@@ -1,8 +1,8 @@
 const container = document.querySelector(".container");
 const btnsignin = document.getElementById("btn-sign-in");
 const btnsignup = document.getElementById("btn-sign-up");
-const botónlog = document.getElementById("iniciar");
-const botónreg = document.getElementById("registro");
+const botonlog = document.getElementById("iniciar");
+const botonreg = document.getElementById("registro");
 
 // Alternar entre el formulario de iniciar sesión y registrarse
 btnsignin.addEventListener("click", () => {
@@ -23,8 +23,18 @@ const validateFields = (fields) => {
     return true; // Todos los campos están llenos
 };
 
+// Función para validar el correo
+const validateEmail = (email) => {
+    return email.endsWith('@gmail.com');
+};
+
+// Función para validar la contraseña
+const validatePassword = (password) => {
+    return password.length >= 6; // Validación: mínimo 6 caracteres
+};
+
 // Registrar usuario
-botónreg.addEventListener("click", (event) => {
+botonreg.addEventListener("click", (event) => {
     event.preventDefault(); // Evita el envío automático del formulario
 
     // Obtener los datos del formulario de registro
@@ -36,6 +46,18 @@ botónreg.addEventListener("click", (event) => {
     // Validar que no haya campos vacíos
     if (!validateFields([nombre, correo, contraseña, repetirContraseña])) {
         alert("Por favor, complete todos los campos.");
+        return;
+    }
+
+    // Validar que el correo tenga el dominio correcto
+    if (!validateEmail(correo.value)) {
+        alert("El correo debe ser un @gmail.com");
+        return;
+    }
+
+    // Validar que la contraseña tenga al menos 6 caracteres
+    if (!validatePassword(contraseña.value)) {
+        alert("La contraseña debe tener al menos 6 caracteres.");
         return;
     }
 
@@ -58,34 +80,40 @@ botónreg.addEventListener("click", (event) => {
 });
 
 // Iniciar sesión
-botónlog.addEventListener("click", (event) => {
+botonlog.addEventListener("click", (event) => {
     event.preventDefault(); // Evita el envío automático del formulario
 
     // Obtener los datos del formulario de inicio de sesión
-    const correoIngresado = document.querySelector(".sign-in input[placeholder='correo']");
-    const contraseñaIngresada = document.querySelector(".sign-in input[placeholder='contraseña']");
+    const correo = document.querySelector(".sign-in input[placeholder='correo']").value.trim(); // Asegurarse de que no haya espacios
+    const contraseña = document.getElementById('login-password').value.trim(); // Lo mismo para la contraseña
 
     // Validar que no haya campos vacíos
-    if (!validateFields([correoIngresado, contraseñaIngresada])) {
+    if (!correo || !contraseña) {
         alert("Por favor, complete todos los campos.");
         return;
     }
 
-    // Obtener los datos guardados en localStorage
-    const usuarioGuardado = JSON.parse(localStorage.getItem('usuario'));
+    // Obtener los datos del usuario registrado desde localStorage
+    const usuarioRegistrado = JSON.parse(localStorage.getItem('usuario'));
 
-    // Verificar si las credenciales coinciden
-    if (usuarioGuardado && usuarioGuardado.correo === correoIngresado.value && usuarioGuardado.contraseña === contraseñaIngresada.value) {
-        alert("Inicio de sesión exitoso.");
+    // Verificar si el usuario está en localStorage
+    if (!usuarioRegistrado) {
+        alert("No se encontró un usuario registrado.");
+        return;
+    }
+
+    // Validar las credenciales
+    if (usuarioRegistrado.correo === correo && usuarioRegistrado.contraseña === contraseña) {
+        alert("Inicio de sesión exitoso");
         window.location.href = "./reserva.html"; // Redirigir a la página de reservas
     } else {
-        alert("Correo o contraseña incorrectos.");
+        alert("Correo o contraseña incorrectos");
     }
 });
 
 // Toggle para mostrar/ocultar contraseña en el Login
 const toggleLoginPassword = document.getElementById('toggle-login-password');
-const loginPasswordInput = document.querySelector(".sign-in input[placeholder='contraseña']");
+const loginPasswordInput = document.getElementById('login-password');
 
 toggleLoginPassword.addEventListener('click', () => {
     const type = loginPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
