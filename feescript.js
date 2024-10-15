@@ -21,7 +21,7 @@ if (mesasSeleccionadas.length === 0) {
 // Redirigir al confirmar la reserva
 document.getElementById('final-confirm').addEventListener('click', () => {
     alert('Reserva confirmada');
-    window.location.href = 'reserva.html';  // Redirige de vuelta a la página de reserva o realiza una acción adicional
+    window.location.href = 'index.html';  // Redirige de vuelta a la página de reserva o realiza una acción adicional
 });
 
 // Lógica para cancelar la reserva
