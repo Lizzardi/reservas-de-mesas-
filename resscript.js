@@ -8,14 +8,13 @@ const finalConfirmButton = document.getElementById('final-confirm');
 const cancelButton = document.getElementById('cancel');
 const selectionContainer = document.querySelector('.selection-container');
 const dateSelection = document.querySelector('.date-selection');
-
 let selectedTables = [];
 
-// Crear los 22 botones
-for (let i = 1; i <= 22; i++) {
-    let button = document.createElement('button');
+// Crear los botones de mesa
+Array.from({ length: 22 }, (_, i) => {
+    const button = document.createElement('button');
     button.classList.add('mesa-button');
-    button.textContent = `M${i}`;
+    button.textContent = `M${i + 1}`;
 
     button.addEventListener('click', () => {
         button.classList.toggle('selected');
@@ -23,80 +22,55 @@ for (let i = 1; i <= 22; i++) {
     });
 
     buttonsContainer.appendChild(button);
-}
+});
 
-function updateSelectedTables() {
+// Actualizar la lista de mesas seleccionadas
+const updateSelectedTables = () => {
     selectedTables = Array.from(document.querySelectorAll('.mesa-button.selected')).map(button => button.textContent);
     confirmTablesButton.classList.toggle('hidden', selectedTables.length === 0);
-}
+};
 
-// Mostrar la selección de fecha cuando se confirmen las mesas
+// Mostrar selección de fecha
 confirmTablesButton.addEventListener('click', () => {
     selectionContainer.classList.add('hidden');
     dateSelection.classList.remove('hidden');
 });
 
-// Validar la fecha y mostrar el formulario de reserva
+// Validar fecha y mostrar el formulario de reserva
 confirmDateButton.addEventListener('click', () => {
     const selectedDate = document.getElementById('date').value;
-    if (!selectedDate) {
-        alert('Por favor, seleccione una fecha.');
-        return;
-    }
+    if (!selectedDate) return alert('Por favor, seleccione una fecha.');
+
     dateSelection.classList.add('hidden');
     reservationForm.classList.remove('hidden');
 });
 
-// Gestionar la reserva al enviar el formulario
+// Gestionar la reserva
 reservationForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const selectedDate = document.getElementById('date').value;
     const selectedTime = document.getElementById('time').value;
 
-    // Validación básica
-    if (selectedTables.length === 0) {
-        alert('Debe seleccionar al menos una mesa.');
-        return;
-    }
+    if (selectedTables.length === 0) return alert('Debe seleccionar al menos una mesa.');
 
     confirmationDetails.textContent = `Mesas: ${selectedTables.join(', ')}, Fecha: ${selectedDate}, Hora: ${selectedTime}`;
     reservationForm.classList.add('hidden');
     confirmationSection.classList.remove('hidden');
 
-    // Guardar las mesas seleccionadas en localStorage
-    localStorage.setItem('mesasSeleccionadas', JSON.stringify(selectedTables));
-
-    // Enviar los datos a un servidor
-    ffetch('tu_ruta_al_servidor', { // Asegúrate de usar la ruta correcta aquí
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            mesas: selectedTables,
-            fecha: selectedDate,
-            hora: selectedTime
-        })
-    })
-    
-    .then(response => {
-        if (response.ok) {
-            alert('Reserva realizada correctamente.');
-            window.location.href = './fee.html'; // Cambiar a fee.html después de la reserva
-        } else {
-            alert('Error al realizar la reserva.');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+    // Guardar las mesas seleccionadas y la reserva en localStorage
+    const reservationData = {
+        mesas: selectedTables,
+        fecha: selectedDate,
+        hora: selectedTime
+    };
+    localStorage.setItem('reserva', JSON.stringify(reservationData));
 });
 
-// Confirmar la reserva final
+// Confirmar y redirigir
 finalConfirmButton.addEventListener('click', () => {
-    alert('Reserva confirmada');
-    window.location.href = './fee.html';
+    alert('Reserva realizada correctamente.'); // Mensaje de confirmación
+    window.location.href = './fee.html'; // Redirigir a fee.html
 });
 
 // Cancelar la reserva
@@ -106,4 +80,3 @@ cancelButton.addEventListener('click', () => {
     document.querySelectorAll('.mesa-button.selected').forEach(button => button.classList.remove('selected'));
     updateSelectedTables();
 });
-
