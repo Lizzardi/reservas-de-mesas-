@@ -14,7 +14,6 @@ for (let i = 1; i <= 22; i++) {
     buttonsContainer.appendChild(button);
 }
 
-// Agregar un evento al formulario para enviar los datos
 reservationForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -29,6 +28,10 @@ reservationForm.addEventListener('submit', (event) => {
         return;
     }
 
+    // Guardar las mesas seleccionadas en localStorage
+    const mesasSeleccionadas = Array.from(selectedTables).map(button => button.textContent);
+    localStorage.setItem('mesasSeleccionadas', JSON.stringify(mesasSeleccionadas));
+
     // Enviar los datos a un servidor (ejemplo con fetch)
     fetch('tu_ruta_al_servidor', {
         method: 'POST',
@@ -36,7 +39,7 @@ reservationForm.addEventListener('submit', (event) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            mesas: Array.from(selectedTables).map(button => button.textContent),
+            mesas: mesasSeleccionadas,
             fecha: selectedDate,
             hora: selectedTime
         })
@@ -44,6 +47,8 @@ reservationForm.addEventListener('submit', (event) => {
     .then(response => {
         if (response.ok) {
             alert('Reserva realizada correctamente.');
+            // Redirigir a la página de la factura
+            window.location.href = 'fee.html'; // Cambia a fee.html después de realizar la reserva
         } else {
             alert('Error al realizar la reserva.');
         }
