@@ -85,7 +85,7 @@ botonlog.addEventListener("click", (event) => {
 
     // Obtener los datos del formulario de inicio de sesión
     const correo = document.querySelector(".sign-in input[placeholder='correo']").value.trim(); // Asegurarse de que no haya espacios
-    const contraseña = document.getElementById('login-password').value.trim(); // Lo mismo para la contraseña
+    const contraseña = document.querySelector(".sign-up input[placeholder='Crear contraseña']").value.trim(); // Lo mismo para la contraseña
 
     // Validar que no haya campos vacíos
     if (!correo || !contraseña) {
@@ -113,7 +113,7 @@ botonlog.addEventListener("click", (event) => {
 
 // Toggle para mostrar/ocultar contraseña en el Login
 const toggleLoginPassword = document.getElementById('toggle-login-password');
-const loginPasswordInput = document.getElementById('login-password');
+const loginPasswordInput = document.querySelector(".sign-up input[placeholder='Crear contraseña']");
 
 toggleLoginPassword.addEventListener('click', () => {
     const type = loginPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
