@@ -27,11 +27,11 @@ if (mesasSeleccionadas.length === 0) {
 // Redirigir al confirmar la reserva
 document.getElementById('final-confirm').addEventListener('click', () => {
     alert('Reserva confirmada');
-    window.location.href = 'index.html'; // Redirige a la página de inicio
+    window.location.href = '../htmls/lobby.html'; // Redirige al lobby
 });
 
 // Lógica para cancelar la reserva
 document.getElementById('cancel').addEventListener('click', () => {
     alert('Reserva cancelada');
-    window.location.href = 'reserva.html'; // Redirige de vuelta a la página de reserva
+    window.location.href = 'reserva.html'; // Revarga la reserva
 });

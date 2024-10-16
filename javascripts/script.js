@@ -2,7 +2,7 @@ const carouselInner = document.querySelector('.carousel-inner');
 const prevButton = document.querySelector('.prev');
 const nextButton = document.querySelector('.next');
 const indicators = document.querySelectorAll('.carousel-indicators button');
-const reserveButton = document.querySelector(".reserve-button");
+const reserveButtons = document.querySelectorAll(".reserve-button");
 
 let currentSlide = 0;
 
@@ -30,26 +30,29 @@ setInterval(() => {
     showSlide(currentSlide);
 }, 5000); // Cambiar cada 5 segundos
 
-reserveButton.addEventListener('click', () => {
-    // Crear la notificación
-    let notification = document.createElement('div');
-    notification.classList.add('notification');
-    notification.innerHTML = `
-        <p>Para poder reservar, primero debe registrarse o iniciar sesión si ya cuenta con una cuenta.</p>
-        <button class="regresar">Regresar</button>
-        <button class="registrarse">Registrarse</button>
-    `;
+// Añadir evento a todos los botones de "Reserva ahora" y "Reserve con nosotros"
+reserveButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Crear la notificación
+        let notification = document.createElement('div');
+        notification.classList.add('notification');
+        notification.innerHTML = `
+            <p>Para poder reservar, primero debe registrarse o iniciar sesión si ya cuenta con una cuenta.</p>
+            <button class="regresar">Regresar</button>
+            <button class="registrarse">Registrarse</button>
+        `;
 
-    // Agregar la notificación al cuerpo del documento
-    document.body.appendChild(notification);
+        // Agregar la notificación al cuerpo del documento
+        document.body.appendChild(notification);
 
-    // Agregar evento al botón "Regresar"
-    notification.querySelector('.regresar').addEventListener('click', () => {
-        document.body.removeChild(notification); // Cerrar la notificación
-    });
+        // Agregar evento al botón "Regresar"
+        notification.querySelector('.regresar').addEventListener('click', () => {
+            document.body.removeChild(notification); // Cerrar la notificación
+        });
 
-    // Agregar evento al botón "Registrarse"
-    notification.querySelector('.registrarse').addEventListener('click', () => {
-        window.location.href = './login.html'; 
+        // Agregar evento al botón "Registrarse"
+        notification.querySelector('.registrarse').addEventListener('click', () => {
+            window.location.href = './login.html'; 
+        });
     });
 });
