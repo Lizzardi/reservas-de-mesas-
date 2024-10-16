@@ -1,0 +1,129 @@
+/* General styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #F9FCE7;
+    color: #EA4B2E;
+    padding: 10px 0;
+    font-size: 18px;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+.navbar h2 {
+    margin: 0;
+}
+
+.user-actions a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #EA4B2E;
+    border-radius: 5px;
+}
+
+.user-actions a:hover {
+    background-color: #a52a2a;
+}
+
+/* Menu section styles */
+.container-images {
+    max-width: 1200px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.container-images h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #EA4B2E;
+}
+
+.menu-images {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.menu-images figure {
+    margin: 0 15px;
+}
+
+.menu-images img {
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu-images figcaption {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #EA4B2E;
+
+}
+/* Footer section */
+.footer {
+    background-color: #EA4B2E; /* Color de fondo */
+    color: #000000; /* Color de texto */
+    text-align: center; /* Centrar el texto */
+    padding: 30px 0px; /* Espaciado superior e inferior */
+    width: 100%; /* Ocupa el 100% del ancho de la página */
+    position: auto; /* Posicionamiento relativo */
+}
+
+/* Estilo para el título */
+.footer h2 {
+    font-size: 24px; /* Tamaño de fuente del título */
+    margin-bottom: 5px; /* Espacio debajo del título */
+}
+
+/* Estilo para los párrafos */
+.footer p {
+    margin: 0px 0; /* Espacio entre los párrafos */
+    font-size: 16px; /* Tamaño de fuente de los párrafos */
+}
+
+/* Estilo para los enlaces */
+.footer a {
+    color: #5da7fc; /* Color de los enlaces */
+    text-decoration: none; /* Quitar subrayado */
+}
+
+.footer a:hover {
+    text-decoration: underline; /* Subrayado al pasar el ratón */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .menu-images {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .menu-images img {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
