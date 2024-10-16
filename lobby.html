@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas</title>
+    <link rel="stylesheet" href="lobby.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="./lobby.html" class="logo"><img
+                    src="./recursos/logo.png"
+                    alt="Logo Restaurante"></a>
+            <h2>!Bienvenido a reservas VLJR!</h2>
+            <div class="user-actions">
+                <a href="./index.html" class="inicio-button">cerrar sesion</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="main-content">
+        <div class="container">
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="./recursos/china.png"
+                                alt="Imagen 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./recursos/italia.png"
+                                alt="Imagen 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./recursos/tartaro.png"
+                                alt="Imagen 3">
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="carousel-indicators">
+                        <button class="active"></button>
+                        <button></button>
+                        <button></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="subtitle">
+            <h1>Patrocinados</h1>
+        </div>
+    </section>
+
+    <div class="sections-container">
+        <div class="section">
+            <img src="./recursos/jesus.png" alt="Imagen 1">
+            <h3>Shifa Dinastia</h3>
+            <p>La mejor comida china solo aqui</p>
+            <button class="reserve-button" onclick="window.location.href='./china/indexchino.html'">Reserva ahora</button>
+        </div>
+        <div class="section">
+            <img src="./recursos/vane.png" alt="Imagen 2">
+            <h3>Restaurante Dolce Vita</h3>
+            <p>El sabor de Italia y sus placeres de la vida</p>
+            <button class="reserve-button" onclick="window.location.href='./italiano.html'">Reserva ahora</button>
+        </div>
+        <div class="section">
+            <img src="./recursos/Ramon.png" alt="Imagen 3">
+            <h3>La mesa del tartaro</h3>
+            <p>Las mejores carnes con el sabor del fuego</p>
+            <button class="reserve-button" onclick="window.location.href='./tartaro.html'">Reserva ahora</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 VLJR. Todos los derechos reservados.</p>
+            <div class="social-icons">
+                <a href="https://es-la.facebook.com/" target="_blank" aria-label="Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+                <a href="https://x.com/" target="_blank" aria-label="Twitter"><ion-icon name="logo-twitter"></ion-icon></a>
+                <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><ion-icon name="logo-instagram"></ion-icon></a>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
+    <script src="lobby.js"></script>
+</body>
+
+</html>
